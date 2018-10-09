@@ -36,6 +36,9 @@ def loadDotEnv(flavor = getCurrentFlavor()) {
                 return true
             }
         }
+
+        // couldn't find a matching env file, so use defaults
+        envFile = project.defaultEnvFile
     } else if (project.hasProperty("defaultEnvFile")) {
         envFile = project.defaultEnvFile
     }
