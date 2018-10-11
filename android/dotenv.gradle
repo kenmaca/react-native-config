@@ -22,7 +22,7 @@ def getCurrentFlavor() {
 }
 
 def loadDotEnv(flavor = getCurrentFlavor()) {
-    def envFile = ".env"
+    def envFile = project.defaultEnvFile
 
     if (System.env['ENVFILE']) {
         envFile = System.env['ENVFILE']
@@ -36,9 +36,6 @@ def loadDotEnv(flavor = getCurrentFlavor()) {
                 return true
             }
         }
-
-        // couldn't find a matching env file, so use defaults
-        envFile = project.defaultEnvFile
     } else if (project.hasProperty("defaultEnvFile")) {
         envFile = project.defaultEnvFile
     }
